@@ -1,11 +1,13 @@
 package br.com.pris.pris.model.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -27,9 +29,8 @@ public class Material {
 	private String unidade_medida;
 	private Double custo;
 	
-	@ManyToOne
-	@JoinColumn(name = "produto_id_produto")
-	@JsonIgnoreProperties("produto")
-	private Produto produto;
+	@OneToMany(mappedBy = "material", fetch = FetchType.EAGER)
+	@JsonIgnoreProperties("material")
+	private List<Material_produto> material_produto;
 
 }

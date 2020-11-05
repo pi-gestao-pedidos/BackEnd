@@ -1,5 +1,6 @@
 package br.com.pris.pris.model.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,8 +24,8 @@ public class Endereco {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_endereco;
 	
-	@OneToOne
-	@JoinColumn(name = "perfil_cliente")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "perfil_cliente", referencedColumnName = "cpf_cnpj")
 	@JsonIgnoreProperties("endereco")
 	private Perfil_cliente perfil_cliente;
 	

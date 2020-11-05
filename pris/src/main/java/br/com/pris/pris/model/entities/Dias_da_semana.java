@@ -1,11 +1,12 @@
 package br.com.pris.pris.model.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -21,9 +22,9 @@ public class Dias_da_semana {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_dias_da_semana;
-	
-	@ManyToOne
-	@JoinColumn(name = "perfil_cliente")
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "perfil_cliente", referencedColumnName = "cpf_cnpj")
 	@JsonIgnoreProperties("dias_da_semana")
 	private Perfil_cliente perfil_cliente;
 	

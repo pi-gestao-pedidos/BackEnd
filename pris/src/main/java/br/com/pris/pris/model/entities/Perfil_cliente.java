@@ -11,10 +11,12 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @Entity
 public class Perfil_cliente {
 	
@@ -29,24 +31,24 @@ public class Perfil_cliente {
 	private Double salario;
 	private String carga_horaria;
 	
-	@OneToMany(mappedBy = "perfil_cliente", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "perfil_cliente")
 	@JsonIgnoreProperties("perfil_cliente")
 	private List<Pedido> pedido;
 	
-	@OneToMany(mappedBy = "perfil_cliente", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "perfil_cliente")
 	@JsonIgnoreProperties("perfil_cliente")
 	private List<Telefone> telefone;
 	
-	@OneToOne(mappedBy = "perfil_cliente", fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "perfil_cliente")
 	@JsonIgnoreProperties("perfil_cliente")
-	private List<Endereco> endereco;
+	private Endereco endereco;
 	
-	@OneToMany(mappedBy = "perfil_cliente", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "perfil_cliente")
 	@JsonIgnoreProperties("perfil_cliente")
 	private List<Despesa> despesa;
 	
-	@OneToOne(mappedBy = "perfil_cliente", fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "perfil_cliente")
 	@JsonIgnoreProperties("perfil_cliente")
-	private List<Dias_da_semana> dias_da_semana;
+	private Dias_da_semana dias_da_semana;
 	
 }

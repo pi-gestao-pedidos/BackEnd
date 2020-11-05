@@ -34,12 +34,16 @@ public class Produto {
 	private Double lucro;
 	private Integer estoque;
 	
-	@OneToMany(mappedBy = "produto", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "produto")
 	@JsonIgnoreProperties("produto")
 	private List<Despesa_produto> despesa_produto;
 	
-	@OneToMany(mappedBy = "produto", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "produto")
 	@JsonIgnoreProperties("produto")
-	private List<Material> material;
+	private List<ItemPedido> itemPedido;
+	
+	@OneToMany(mappedBy = "produto")
+	@JsonIgnoreProperties("produto")
+	private List<Material_produto> material_produto;
 
 }
