@@ -2,9 +2,8 @@ package br.com.pris.pris.model.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import br.com.pris.pris.model.entities.Despesa_produto;
+import br.com.pris.pris.model.entities.Despesa;
 
-public interface Despesa_produtoRepository extends CrudRepository<Despesa_produto, Integer>{
-	
+public interface DespesaProdutoRepository extends CrudRepository<Despesa, Integer>{
 
 }

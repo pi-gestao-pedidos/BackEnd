@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import br.com.pris.pris.model.entities.ItemPedido;
 
-public interface ItemPedidoRepository extends CrudRepository<ItemPedido, Integer>{
+public interface ItemPedidoRepository extends CrudRepository<ItemPedido, Integer> {
 
 }

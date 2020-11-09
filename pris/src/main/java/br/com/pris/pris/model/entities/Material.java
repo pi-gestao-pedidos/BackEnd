@@ -3,7 +3,6 @@ package br.com.pris.pris.model.entities;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,17 +19,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Material {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_material;
+	private Integer idMaterial;
 	
 	private String nome;
 	private Integer estoque;
-	private String unidade_medida;
-	private Double custo;
+	private String unidadeMedida;
 	
-	@OneToMany(mappedBy = "material", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "material")
 	@JsonIgnoreProperties("material")
-	private List<Material_produto> material_produto;
+	private List<MaterialProduto> materiais;
+	
+	@OneToMany(mappedBy = "material")
+	@JsonIgnoreProperties("material")
+	private List<EntradaEstoque> entradasEstoque;
 
 }

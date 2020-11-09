@@ -21,19 +21,19 @@ public class ItemPedido {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_item_pedido;
+	private Integer idItemPedido;
+	
+	@ManyToOne
+	@JoinColumn(name="idProduto")
+	@JsonIgnoreProperties("produto_pedido")
+	private Produto produto;
+	
+	@ManyToOne
+	@JoinColumn(name="idPedido")
+	@JsonIgnoreProperties("produto_pedido")
+	private Pedido pedido;
 	
 	private Integer quantidade;
 	private Double lucro;
-	
-	@ManyToOne
-	@JoinColumn(name = "pedido")
-	@JsonIgnoreProperties("itemPedido")
-	private Pedido pedido;
-	
-	@ManyToOne
-	@JoinColumn(name = "produto")
-	@JsonIgnoreProperties("itemPedido")
-	private Produto produto;
 
 }

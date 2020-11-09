@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import br.com.pris.pris.model.entities.Material;
 
-public interface MaterialRepository extends CrudRepository<Material, Integer>{
+public interface MaterialRepository extends CrudRepository<Material, Integer> {
 
 }

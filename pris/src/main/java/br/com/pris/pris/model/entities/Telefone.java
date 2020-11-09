@@ -21,12 +21,12 @@ public class Telefone {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_telefone;
+	private int idTelefone;
 	
 	@ManyToOne
-	@JoinColumn(name = "perfil_cliente")
-	@JsonIgnoreProperties("telefone")
-	private Perfil_cliente perfil_cliente;
+	@JoinColumn(name = "idPessoa")
+	@JsonIgnoreProperties("pessoa")
+	private Pessoa pessoa;
 	
 	private String ddd;
 	private String numero;

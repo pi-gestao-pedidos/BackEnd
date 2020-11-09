@@ -2,8 +2,8 @@ package br.com.pris.pris.model.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import br.com.pris.pris.model.entities.Dias_da_semana;
+import br.com.pris.pris.model.entities.Semana;
 
-public interface Dias_da_semanaRepository extends CrudRepository<Dias_da_semana, Integer>{
+public interface SemanaRepository extends CrudRepository<Semana, Integer>{
 
 }

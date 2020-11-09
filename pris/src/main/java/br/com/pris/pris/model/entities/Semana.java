@@ -18,15 +18,15 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Dias_da_semana {
+public class Semana {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_dias_da_semana;
-
+	private int idSemana;
+	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "perfil_cliente", referencedColumnName = "cpf_cnpj")
-	@JsonIgnoreProperties("dias_da_semana")
-	private Perfil_cliente perfil_cliente;
+	@JoinColumn(name = "idPessoa", referencedColumnName = "idPessoa")
+	@JsonIgnoreProperties("pessoa")
+	private Pessoa pessoa;
 	
 	private Boolean domingo;
 	private Boolean segunda;

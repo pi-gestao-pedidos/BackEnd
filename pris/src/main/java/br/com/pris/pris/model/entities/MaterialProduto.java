@@ -17,22 +17,22 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Material_produto {
+public class MaterialProduto {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_material_produto;
 	
-	private Integer quantidade;
-	
 	@ManyToOne
-	@JoinColumn(name = "material")
+	@JoinColumn(name="id_material")
 	@JsonIgnoreProperties("material_produto")
 	private Material material;
 	
 	@ManyToOne
-	@JoinColumn(name = "produto")
+	@JoinColumn(name="id_produto")
 	@JsonIgnoreProperties("material_produto")
 	private Produto produto;
+	
+	private Integer quantidade;
 
 }

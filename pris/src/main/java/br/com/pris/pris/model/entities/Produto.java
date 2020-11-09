@@ -1,9 +1,9 @@
 package br.com.pris.pris.model.entities;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,27 +23,27 @@ public class Produto {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_produto;
+	private Integer idProduto;
 	
 	private String nome;
 	private String descricao;
 	private Integer tempo;
-	private Integer unidade_mensal;
-	private Double preco_custo;
-	private Double preco_venda;
+	private Integer unidadeMensal;
+	private BigDecimal precoCusto;
+	private BigDecimal precoVenda;
 	private Double lucro;
 	private Integer estoque;
 	
 	@OneToMany(mappedBy = "produto")
 	@JsonIgnoreProperties("produto")
-	private List<Despesa_produto> despesa_produto;
+	private List<DespesaProduto> despesas;
 	
 	@OneToMany(mappedBy = "produto")
 	@JsonIgnoreProperties("produto")
-	private List<ItemPedido> itemPedido;
+	private List<MaterialProduto> material;
 	
 	@OneToMany(mappedBy = "produto")
 	@JsonIgnoreProperties("produto")
-	private List<Material_produto> material_produto;
+	private List<ItemPedido> pedidos;
 
 }
