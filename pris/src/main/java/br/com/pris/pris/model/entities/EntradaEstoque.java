@@ -1,5 +1,8 @@
 package br.com.pris.pris.model.entities;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,22 +20,19 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Dias_da_semana {
+public class EntradaEstoque {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_dias_da_semana;
+	private Integer idEntrada;
 	
 	@ManyToOne
-	@JoinColumn(name = "perfil_cliente")
-	@JsonIgnoreProperties("dias_da_semana")
-	private Perfil_cliente perfil_cliente;
+	@JoinColumn(name = "idMaterial")
+	@JsonIgnoreProperties("entradaEstoque")
+	private Material material;
 	
-	private Boolean domingo;
-	private Boolean segunda;
-	private Boolean terca;
-	private Boolean quarta;
-	private Boolean quinta;
-	private Boolean sexta;
-	private Boolean sabado;
+	private LocalDate data;
+	private Integer quantidade;
+	private BigDecimal custo;
 
 }

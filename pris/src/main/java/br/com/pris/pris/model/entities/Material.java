@@ -1,11 +1,12 @@
 package br.com.pris.pris.model.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -17,17 +18,22 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Telefone {
+public class Material {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idTelefone;
+	private Integer idMaterial;
 	
-	@ManyToOne
-	@JoinColumn(name = "idPessoa")
-	@JsonIgnoreProperties("pessoa")
-	private Pessoa pessoa;
+	private String nome;
+	private Integer estoque;
+	private String unidadeMedida;
 	
-	private String ddd;
-	private String numero;
+	@OneToMany(mappedBy = "material")
+	@JsonIgnoreProperties("material")
+	private List<MaterialProduto> materiais;
+	
+	@OneToMany(mappedBy = "material")
+	@JsonIgnoreProperties("material")
+	private List<EntradaEstoque> entradasEstoque;
+
 }
