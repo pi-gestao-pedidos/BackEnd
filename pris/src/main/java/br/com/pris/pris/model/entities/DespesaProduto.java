@@ -1,5 +1,7 @@
 package br.com.pris.pris.model.entities;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,17 +19,20 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Telefone {
+public class DespesaProduto {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idTelefone;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	private Integer idDespesaProduto;
+	
+	private String nome;	
+	private BigDecimal valor;	
+	private Double porcentagem;	
 	
 	@ManyToOne
-	@JoinColumn(name = "idPessoa")
-	@JsonIgnoreProperties("pessoa")
-	private Pessoa pessoa;
+	@JoinColumn(name = "idProduto")
+	@JsonIgnoreProperties("produto")
+	private Produto produto;
 	
-	private String ddd;
-	private String numero;
+
 }

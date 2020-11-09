@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -21,16 +21,17 @@ public class Endereco {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_endereco;
+	private int idEndereco;
 	
-	@OneToOne
-	@JoinColumn(name = "perfil_cliente")
+	@ManyToOne
+	@JoinColumn(name = "idPessoa")
 	@JsonIgnoreProperties("endereco")
-	private Perfil_cliente perfil_cliente;
+	private Pessoa pessoa;
 	
 	private String cep;
 	private String logradouro;
-	private String completemento;
+	private String numero;
+	private String complemento;
 	private String bairro;
 	private String localidade;
 	private String uf;
