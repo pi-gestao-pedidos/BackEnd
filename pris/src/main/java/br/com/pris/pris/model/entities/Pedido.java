@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -39,9 +41,14 @@ public class Pedido {
 	private List<ItemPedido> produtos;
 	
 	private Integer status;
+
 	private LocalDateTime dataPedido;
 	private LocalDate dataPntrega;
+	
+	@NotBlank(message = "Desconto deve possuir um valor")
+	@DecimalMin(value = "0.00", message = "Desconto deve ser maior ou igual a 0.00")
 	private Double desconto;
+	
 	private BigDecimal total;
 	
 }
