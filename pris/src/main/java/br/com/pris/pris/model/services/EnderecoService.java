@@ -9,41 +9,41 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.com.pris.pris.model.entities.Cliente;
-import br.com.pris.pris.model.repositories.ClienteRepository;
+import br.com.pris.pris.model.entities.Endereco;
+import br.com.pris.pris.model.repositories.EnderecoRepository;
 
 @Service
 @Validated
-public class ClienteService {
+public class EnderecoService {
 
 	@Autowired
-	private ClienteRepository repository;
-
-	public Cliente addCliente(@Valid Cliente cliente) {
-		return this.repository.save(cliente);
+	private EnderecoRepository repository;
+	
+	public Endereco addEndereco(@Valid Endereco endereco) {
+		return repository.save(endereco);
 	}
-
-	public Iterable<Cliente> findAllClientes() {
+	
+	public Iterable<Endereco> findAllEnderecos() {
 		return repository.findAll();
 	}
 
-	public Cliente findClienteById(Integer id) {
+	public Endereco findEnderecoById(Integer id) {
 		return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-				"O cliente não foi encontrado."));
+				"O Endereco não foi encontrado."));
 	}
 
-	public Cliente changeCliente(@Valid Cliente cliente, Integer id) {
-		this.findClienteById(id);
-		cliente.setIdPessoa(id);;
-		return this.addCliente(cliente);
+	public Endereco changeEndereco(@Valid Endereco endereco, Integer id) {
+		this.findEnderecoById(id);
+		endereco.setIdEndereco(id);;
+		return this.addEndereco(endereco);
 	}
 
-	public void deleteCliente(Integer id) {
+	public void deleteEndereco(Integer id) {
 		try {
 			repository.deleteById(id);
 			}catch(EmptyResultDataAccessException e){
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-						"O cliente não foi encontrado.");
+						"A Endereco não foi encontrada.");
 			}
 	}
 }

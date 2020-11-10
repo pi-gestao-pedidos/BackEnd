@@ -8,9 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,9 +27,10 @@ public class Endereco {
 	
 	@ManyToOne
 	@JoinColumn(name = "idPessoa")
-	@JsonIgnoreProperties("endereco")
+	@JsonIgnore
 	private Pessoa pessoa;
 	
+	@NotBlank(message = "Campo CEP deve estar preenchido")
 	@Pattern(regexp = "^\\d{5}-\\d{3}$", message = "Campo CEP deve estar preenchido")
 	private String cep;
 	
@@ -48,7 +48,6 @@ public class Endereco {
 	private String localidade;
 	
 	@NotBlank(message = "Campo UF deve estar preenchido")
-	@Size(min = 2, max = 2, message = "Sigla da UF deve ter 2 letras")
 	private String uf;
 
 }

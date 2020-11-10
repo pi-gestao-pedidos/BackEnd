@@ -36,6 +36,6 @@ public class Empreendedor extends Funcionario {
 	private String senha;
 
 	@OneToMany(mappedBy = "pessoa")
-	@JsonIgnoreProperties("pessoa")
+	@JsonIgnoreProperties("despesa")
 	private List<Despesa> despesas;
 }

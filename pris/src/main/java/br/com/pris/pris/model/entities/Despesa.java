@@ -10,8 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,13 +30,13 @@ public class Despesa {
 
 	@ManyToOne
 	@JoinColumn(name = "idPessoa")
-	@JsonIgnoreProperties("pessoa")
+	@JsonIgnore
 	private Pessoa pessoa;
 
 	@NotBlank(message = "Campo Nome deve estar preenchido.")
 	private String nome;
 
-	@NotBlank(message = "Campo Valor deve estar preenchido.")
+	@NotNull(message = "Campo Valor deve estar preenchido.")
 	@DecimalMin(value = "0.00", message = "Valor deve ser positivo.")
 	private BigDecimal valor;
 }

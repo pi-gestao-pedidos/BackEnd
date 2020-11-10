@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,7 +38,7 @@ public class DespesaProduto {
 	
 	@ManyToOne
 	@JoinColumn(name = "idProduto")
-	@JsonIgnoreProperties("produto")
+	@JsonIgnore
 	private Produto produto;
 	
 
