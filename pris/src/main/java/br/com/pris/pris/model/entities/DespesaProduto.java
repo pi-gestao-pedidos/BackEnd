@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -25,8 +27,13 @@ public class DespesaProduto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private Integer idDespesaProduto;
 	
-	private String nome;	
+	@NotBlank(message = "Campo Nome estar preenchido.")
+	private String nome;
+	
+	@DecimalMin(value = "0.00", message = "Valor deve ser positivo.")
 	private BigDecimal valor;	
+	
+	@DecimalMin(value = "0.00", message = "Porcentagem deve ser positivo.")
 	private Double porcentagem;	
 	
 	@ManyToOne
