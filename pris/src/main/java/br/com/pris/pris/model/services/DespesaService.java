@@ -9,41 +9,41 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.com.pris.pris.model.entities.Cliente;
-import br.com.pris.pris.model.repositories.ClienteRepository;
+import br.com.pris.pris.model.entities.Despesa;
+import br.com.pris.pris.model.repositories.DespesaRepository;
 
 @Service
 @Validated
-public class ClienteService {
+public class DespesaService {
 
 	@Autowired
-	private ClienteRepository repository;
-
-	public Cliente addCliente(@Valid Cliente cliente) {
-		return this.repository.save(cliente);
+	private DespesaRepository repository;
+	
+	public Despesa addDespesa(@Valid Despesa despesa) {
+		return this.repository.save(despesa);
 	}
-
-	public Iterable<Cliente> findAllClientes() {
+	
+	public Iterable<Despesa> findAllDespesas() {
 		return repository.findAll();
 	}
 
-	public Cliente findClienteById(Integer id) {
+	public Despesa findDespesaById(Integer id) {
 		return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-				"O cliente não foi encontrado."));
+				"A Despesa não foi encontrada."));
 	}
 
-	public Cliente changeCliente(@Valid Cliente cliente, Integer id) {
-		this.findClienteById(id);
-		cliente.setIdPessoa(id);;
-		return this.addCliente(cliente);
+	public Despesa changeDespesa(@Valid Despesa despesa, Integer id) {
+		this.findDespesaById(id);
+		despesa.setIdDespesa(id);;
+		return this.addDespesa(despesa);
 	}
 
-	public void deleteCliente(Integer id) {
+	public void deleteDespesa(Integer id) {
 		try {
 			repository.deleteById(id);
 			}catch(EmptyResultDataAccessException e){
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-						"O cliente não foi encontrado.");
+						"A Despesa não foi encontrada.");
 			}
 	}
 }
