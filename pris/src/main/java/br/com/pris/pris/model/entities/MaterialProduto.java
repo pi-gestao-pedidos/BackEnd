@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -25,14 +27,16 @@ public class MaterialProduto {
 	
 	@ManyToOne
 	@JoinColumn(name="id_material")
-	@JsonIgnoreProperties("material_produto")
+	@JsonIgnoreProperties("materiais")
 	private Material material;
 	
 	@ManyToOne
 	@JoinColumn(name="id_produto")
-	@JsonIgnoreProperties("material_produto")
+	@JsonIgnoreProperties("materiais")
 	private Produto produto;
 	
+	@NotBlank(message = "Quantidade deve possuir um valor")
+	@Min(value = 1, message = "Quantidade deve ser maior que 1")
 	private Integer quantidade;
 
 }
