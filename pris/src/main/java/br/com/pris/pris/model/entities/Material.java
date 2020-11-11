@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -31,7 +32,7 @@ public class Material {
 	@Size (min = 3, message = "Nome deve ter mais que 2 caracteres.")
 	private String nome;
 	
-	@NotBlank(message = "Estoque deve possuir um valor")
+	@NotNull(message = "Estoque deve possuir um valor")
 	@Min(value = 0, message = "Estoque deve ser maior que 0")
 	private Integer estoque;
 	
