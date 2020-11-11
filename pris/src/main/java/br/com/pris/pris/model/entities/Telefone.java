@@ -32,6 +32,6 @@ public class Telefone {
 	@Pattern(regexp="^(\\d{2})$", message = "DDD deve seguir o padrão 99")
 	private String ddd;
 	
-	@Pattern(regexp="^(\\d{5}\\-\\d{4})|(\\d{4}\\-\\d{4})$", message = "Número deve seguir o padrão 99999-9999")
+	@Pattern(regexp="^(\\d?\\d{4}\\-\\d{4})$", message = "Número deve seguir o padrão 99999-9999")
 	private String numero;
 }

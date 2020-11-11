@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -35,7 +35,7 @@ public class MaterialProduto {
 	@JsonIgnoreProperties("materiais")
 	private Produto produto;
 	
-	@NotBlank(message = "Quantidade deve possuir um valor")
+	@NotNull(message = "Quantidade deve possuir um valor")
 	@Min(value = 1, message = "Quantidade deve ser maior que 1")
 	private Integer quantidade;
 

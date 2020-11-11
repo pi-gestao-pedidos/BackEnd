@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -35,27 +36,29 @@ public class Produto {
 	
 	private String descricao;
 	
-	@NotBlank(message = "Tempo possuir um valor em Minutos")
+	@NotNull(message = "Tempo possuir um valor em Minutos")
 	@Min(value = 1, message = "Tempo deve ser maior que 0")
 	private Integer tempo;
 	
-	@NotBlank(message = "Quantidade mensal deve possuir um valor")
+	@NotNull(message = "Quantidade mensal deve possuir um valor")
 	@Min(value = 0, message = "Quantidade mensal Tempo deve ser maior ou igual a 0")
 	private Integer unidadeMensal;
 	
-	@NotBlank(message = "Preço de custo deve possuir um valor")
+	@NotNull(message = "Preço de custo deve possuir um valor")
 	@DecimalMin(value = "0.00", message = "Preço de custo deve ser maior ou igual a 0.00")
 	private BigDecimal precoCusto;
 	
-	@NotBlank(message = "Preço de venda deve possuir um valor")
+	@NotNull(message = "Preço de venda deve possuir um valor")
 	@DecimalMin(value = "0.00", message = "Preço de venda deve ser maior ou igual a 0.00")
 	private BigDecimal precoVenda;
 	
-	@NotBlank(message = "Lucro deve possuir um valor")
+	private BigDecimal precoSugerido;
+	
+	@NotNull(message = "Lucro deve possuir um valor")
 	@DecimalMin(value = "0.00", message = "Lucro deve ser maior ou igual a 0.00")
 	private Double lucro;
 	
-	@NotBlank(message = "Estoque deve possuir um valor")
+	@NotNull(message = "Estoque deve possuir um valor")
 	@Min(value = 0, message = "Estoque deve ser maior que 0")
 	private Integer estoque;
 	

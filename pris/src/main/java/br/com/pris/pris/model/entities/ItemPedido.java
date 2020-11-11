@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -36,11 +36,11 @@ public class ItemPedido {
 	@JsonIgnoreProperties("pedidos")
 	private Pedido pedido;
 	
-	@NotBlank(message = "Quantidade deve possuir um valor")
+	@NotNull(message = "Quantidade deve possuir um valor")
 	@Min(value = 1, message = "Quantidade deve ser maior que 1")
 	private Integer quantidade;
 	
-	@NotBlank(message = "Lucro deve possuir um valor")
+	@NotNull(message = "Lucro deve possuir um valor")
 	@DecimalMin(value = "0.00", message = "Lucro deve ser maior ou igual a 0.00")
 	private Double lucro;
 
