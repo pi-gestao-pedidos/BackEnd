@@ -17,6 +17,7 @@ import br.com.pris.pris.model.repositories.SemanaRepository;
 public class SemanaService {
 	@Autowired
 	private SemanaRepository repository;
+	
 
 	public Semana addSemana(@Valid Semana semana) {
 		return this.repository.save(semana);

@@ -18,6 +18,7 @@ public class EmpreendedorService {
 
 	@Autowired
 	private EmpreendedorRepository repository;
+
 	
 	public Empreendedor addEmpreendedor(@Valid Empreendedor empreendedor) {
 		return this.repository.save(empreendedor);
@@ -46,4 +47,21 @@ public class EmpreendedorService {
 						"O Empreendedor não foi encontrado.");
 			}
 	}
+	
+	public int showCargaHorariaTotal(Integer id) {
+		int horas = this.findEmpreendedorById(id).getCargaHoraria();
+		int dias = 0;
+		
+		if(this.findEmpreendedorById(id).getSemana().getDomingo())dias++;
+		if(this.findEmpreendedorById(id).getSemana().getQuarta()) dias++;
+		if(this.findEmpreendedorById(id).getSemana().getQuinta()) dias++;
+		if(this.findEmpreendedorById(id).getSemana().getSabado()) dias++;
+		if(this.findEmpreendedorById(id).getSemana().getSexta()) dias++;
+		if(this.findEmpreendedorById(id).getSemana().getTerca()) dias++;
+		if(this.findEmpreendedorById(id).getSemana().getSegunda()) dias++;
+		
+		
+		return dias*horas*4;
+	}
+
 }
