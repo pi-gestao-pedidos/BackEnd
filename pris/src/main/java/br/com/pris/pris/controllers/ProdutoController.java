@@ -50,4 +50,9 @@ public class ProdutoController {
 		service.deleteProduto(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+	@GetMapping("/{id}/preco")
+	public ResponseEntity<String> calculo(@PathVariable Integer id) {
+		return ResponseEntity.ok(service.estimateProdutoPrice(id));
+	}
 }

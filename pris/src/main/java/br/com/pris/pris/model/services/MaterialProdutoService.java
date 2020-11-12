@@ -1,5 +1,7 @@
 package br.com.pris.pris.model.services;
 
+import java.math.BigDecimal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,10 @@ public class MaterialProdutoService {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND,
 						"O MaterialProduto não foi encontrado.");
 			}
+	}
+	
+	public BigDecimal custoTotal(Integer id) {
+		return this.repository.custoTotalMateriais(id);
 	}
 	
 }
