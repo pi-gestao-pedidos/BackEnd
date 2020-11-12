@@ -2,7 +2,6 @@ package br.com.pris.pris.model.entities;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Entity;
