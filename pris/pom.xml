@@ -12,7 +12,7 @@
 	<artifactId>pris</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>pris</name>
-	<description>Aprenda precificar seu produto</description>
+	<description>Aprenda a precificar seu produto</description>
 
 	<properties>
 		<java.version>11</java.version>
