@@ -10,6 +10,7 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -24,17 +25,21 @@ public class ItemPedido {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonIgnore
 	private Integer idItemPedido;
 	
-	@ManyToOne
-	@JoinColumn(name="idProduto")
-	@JsonIgnoreProperties("pedidos")
-	private Produto produto;
+	private Integer idPedido;
+	private Integer idProduto;
 	
 	@ManyToOne
-	@JoinColumn(name="idPedido")
+	@JoinColumn(name="idPedido", insertable=false, updatable=false)
 	@JsonIgnoreProperties("pedidos")
 	private Pedido pedido;
+	
+	@ManyToOne
+	@JoinColumn(name="idProduto", insertable=false, updatable=false)
+	@JsonIgnoreProperties({"tempo","unidadeMensal","despesas","materiais","pedidos"})
+	private Produto produto;
 	
 	@NotNull(message = "Quantidade deve possuir um valor")
 	@Min(value = 1, message = "Quantidade deve ser maior que 1")
