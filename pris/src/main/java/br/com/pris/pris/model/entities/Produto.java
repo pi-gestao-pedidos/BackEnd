@@ -14,6 +14,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -71,7 +72,7 @@ public class Produto {
 	private List<MaterialProduto> materiais;
 	
 	@OneToMany(mappedBy = "produto")
-	@JsonIgnoreProperties("produtos")
+	@JsonIgnore//Properties("produtos")
 	private List<ItemPedido> pedidos;
 
 }

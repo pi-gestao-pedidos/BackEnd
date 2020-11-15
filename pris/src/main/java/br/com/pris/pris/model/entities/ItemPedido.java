@@ -28,13 +28,16 @@ public class ItemPedido {
 	@JsonIgnore
 	private Integer idItemPedido;
 	
+	private Integer idPedido;
+	private Integer idProduto;
+	
 	@ManyToOne
-	@JoinColumn(name="idPedido")
-	@JsonIgnore//Properties("pedidos")
+	@JoinColumn(name="idPedido", insertable=false, updatable=false)
+	@JsonIgnoreProperties("pedidos")
 	private Pedido pedido;
 	
 	@ManyToOne
-	@JoinColumn(name="idProduto")
+	@JoinColumn(name="idProduto", insertable=false, updatable=false)
 	@JsonIgnoreProperties({"tempo","unidadeMensal","despesas","materiais","pedidos"})
 	private Produto produto;
 	
