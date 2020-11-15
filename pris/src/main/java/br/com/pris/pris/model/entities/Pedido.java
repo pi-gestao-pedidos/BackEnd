@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -29,7 +28,14 @@ public class Pedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPedido;
+	private Integer status;
+	private LocalDate dataPedido;
+	private LocalDate dataEntrega;
+	private BigDecimal total;
 	
+	@DecimalMin(value = "0.00", message = "Desconto deve ser maior ou igual a 0.00")
+	private Double desconto;
+		
 	@ManyToOne
 	@JoinColumn(name = "idPessoa")
 	@JsonIgnoreProperties("pedido")
@@ -39,15 +45,5 @@ public class Pedido {
 	@JsonIgnoreProperties("pedido")
 	private List<ItemPedido> produtos;
 	
-	private Integer status;
-	
-	private LocalDate dataPedido;
-	private LocalDate dataEntrega;
-	
-	@NotNull(message = "Desconto deve possuir um valor")
-	@DecimalMin(value = "0.00", message = "Desconto deve ser maior ou igual a 0.00")
-	private Double desconto;
-	
-	private BigDecimal total;
 	
 }

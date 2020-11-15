@@ -9,7 +9,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,7 +30,7 @@ public class Cliente extends Pessoa{
 	private String email;
 	
 	@OneToMany(mappedBy = "pessoa")
-	@JsonIgnoreProperties("pessoa")
+	@JsonIgnore//Properties("pessoa")
 	private List<Pedido> pedidos;
 	
 }
