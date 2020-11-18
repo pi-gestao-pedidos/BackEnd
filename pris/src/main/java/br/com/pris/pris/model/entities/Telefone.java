@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -28,6 +29,9 @@ public class Telefone {
 	@JsonIgnoreProperties("pessoa")
 	private Pessoa pessoa;
 	
+	@Pattern(regexp="^(\\d{2})$", message = "DDD deve seguir o padrão 99")
 	private String ddd;
+	
+	@Pattern(regexp="^(\\d?\\d{4}\\-\\d{4})$", message = "Número deve seguir o padrão 99999-9999")
 	private String numero;
 }

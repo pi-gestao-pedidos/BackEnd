@@ -41,5 +41,6 @@ public class DespesaProduto {
 	@JsonIgnore
 	private Produto produto;
 	
+	
 
 }

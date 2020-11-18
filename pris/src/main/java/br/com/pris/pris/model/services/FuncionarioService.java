@@ -19,6 +19,7 @@ public class FuncionarioService {
 	@Autowired
 	private FuncionarioRepository repository;
 
+
 	public Funcionario addFuncionario(@Valid Funcionario funcionario) {
 		return this.repository.save(funcionario);
 	}
@@ -45,4 +46,19 @@ public class FuncionarioService {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "O Funcionario não foi encontrado.");
 		}
 	}
+	
+	public int showCargaHorariaTotal(Integer id) {
+		int horas = this.findFuncionarioById(id).getCargaHoraria();
+		int dias = 0;
+		if(this.findFuncionarioById(id).getSemana().getDomingo()) dias++;
+		if(this.findFuncionarioById(id).getSemana().getQuarta()) dias++;
+		if(this.findFuncionarioById(id).getSemana().getQuinta()) dias++;
+		if(this.findFuncionarioById(id).getSemana().getSabado()) dias++;
+		if(this.findFuncionarioById(id).getSemana().getSexta()) dias++;
+		if(this.findFuncionarioById(id).getSemana().getTerca()) dias++;
+		if(this.findFuncionarioById(id).getSemana().getSegunda()) dias++;
+		
+		return dias*horas*4;
+	}
+	
 }
