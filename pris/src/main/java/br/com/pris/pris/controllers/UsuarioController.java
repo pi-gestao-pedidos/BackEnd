@@ -48,6 +48,7 @@ public class UsuarioController {
             System.out.println(token);
             return new TokenDTO(usuario.getEmail(), token);
         } catch (UsernameNotFoundException | SenhaInvalidaException e ){
+        	System.out.println(e.getStackTrace());
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, e.getMessage());
         }
     }
