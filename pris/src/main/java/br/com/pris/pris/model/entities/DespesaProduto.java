@@ -27,6 +27,8 @@ public class DespesaProduto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private Integer idDespesaProduto;
 	
+	private Integer idProduto;
+	
 	@NotBlank(message = "Campo Nome estar preenchido.")
 	private String nome;
 	
@@ -37,7 +39,7 @@ public class DespesaProduto {
 	private Double porcentagem;	
 	
 	@ManyToOne
-	@JoinColumn(name = "idProduto")
+	@JoinColumn(name = "idProduto", insertable=false, updatable=false)
 	@JsonIgnore
 	private Produto produto;
 	

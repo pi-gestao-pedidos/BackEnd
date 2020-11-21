@@ -18,7 +18,7 @@ import br.com.pris.pris.model.entities.Produto;
 import br.com.pris.pris.model.services.ProdutoService;
 
 @RestController
-@RequestMapping("/produto")
+@RequestMapping("/produtos")
 @CrossOrigin
 public class ProdutoController {
 	@Autowired

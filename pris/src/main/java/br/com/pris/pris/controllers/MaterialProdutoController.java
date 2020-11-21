@@ -21,12 +21,18 @@ import br.com.pris.pris.model.services.MaterialProdutoService;
 @RequestMapping("/materialproduto")
 @CrossOrigin
 public class MaterialProdutoController {
+	
 	@Autowired
 	private MaterialProdutoService service;
 
 	@PostMapping
 	public ResponseEntity<MaterialProduto> insertMaterialProduto(@Valid @RequestBody MaterialProduto materialProduto) {
 		return ResponseEntity.ok(service.addMaterialProduto(materialProduto));
+	}
+	
+	@PostMapping("/lista")
+	public ResponseEntity<Iterable<MaterialProduto>> insertMaterialProdutoList(@Valid @RequestBody Iterable<MaterialProduto> materialProduto) {
+		return ResponseEntity.ok(service.addMaterialProdutoList(materialProduto));
 	}
 
 	@GetMapping

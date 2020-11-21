@@ -21,6 +21,7 @@ public class MaterialProdutoService {
 	@Autowired
 	private MaterialProdutoRepository repository;
 
+	
 	public MaterialProduto addMaterialProduto(@Valid MaterialProduto materialProduto) {
 		return this.repository.save(materialProduto);
 	}
@@ -51,6 +52,12 @@ public class MaterialProdutoService {
 	
 	public BigDecimal custoTotal(Integer id) {
 		return this.repository.custoTotalMateriais(id);
+	}
+
+	public Iterable<MaterialProduto> addMaterialProdutoList(@Valid Iterable<MaterialProduto> materialProduto) {
+		Iterable<MaterialProduto> materiais = materialProduto;
+		materiais.forEach(material -> this.addMaterialProduto(material));
+		return materiais;
 	}
 	
 }

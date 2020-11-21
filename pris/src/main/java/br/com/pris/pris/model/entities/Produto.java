@@ -45,8 +45,8 @@ public class Produto {
 	@Min(value = 0, message = "Quantidade mensal Tempo deve ser maior ou igual a 0")
 	private Integer unidadeMensal;
 	
-	@NotNull(message = "Preço de custo deve possuir um valor")
-	@DecimalMin(value = "0.00", message = "Preço de custo deve ser maior ou igual a 0.00")
+	//@NotNull(message = "Preço de custo deve possuir um valor")
+	//@DecimalMin(value = "0.00", message = "Preço de custo deve ser maior ou igual a 0.00")
 	private BigDecimal precoCusto;
 	
 	@NotNull(message = "Preço de venda deve possuir um valor")
@@ -55,16 +55,16 @@ public class Produto {
 	
 	private BigDecimal precoSugerido;
 	
-	@NotNull(message = "Lucro deve possuir um valor")
+	//@NotNull(message = "Lucro deve possuir um valor")
 	@DecimalMin(value = "0.00", message = "Lucro deve ser maior ou igual a 0.00")
 	private Double lucro;
 	
-	@NotNull(message = "Estoque deve possuir um valor")
-	@Min(value = 0, message = "Estoque deve ser maior que 0")
-	private Integer estoque;
+	//@NotNull(message = "Estoque deve possuir um valor")
+	//@Min(value = 0, message = "Estoque deve ser maior que 0")
+	//private Integer estoque;
 	
 	@OneToMany(mappedBy = "produto")
-	@JsonIgnoreProperties("produto")
+	@JsonIgnoreProperties({"produto", "idProduto"})
 	private List<DespesaProduto> despesas;
 	
 	@OneToMany(mappedBy = "produto")

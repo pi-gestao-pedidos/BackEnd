@@ -31,8 +31,10 @@ public class EntradaEstoque {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idEntrada;
 	
+	private Integer idMaterial;
+	
 	@ManyToOne
-	@JoinColumn(name = "idMaterial")
+	@JoinColumn(name = "idMaterial", insertable=false, updatable=false)
 	@JsonIgnore
 	private Material material;
 	
@@ -47,5 +49,4 @@ public class EntradaEstoque {
 	@NotNull(message = "Campo Custo deve estar preenchido")
 	@DecimalMin(value = "0.00", message = "Custo deve ser positivo.")
 	private BigDecimal custo;
-
 }
