@@ -46,4 +46,10 @@ public class DespesaProdutoService {
 						"A Despesa não foi encontrada.");
 			}
 	}
+
+	public Iterable<DespesaProduto> addDespesaProdutoList(@Valid Iterable<DespesaProduto> despesaProduto) {
+		Iterable<DespesaProduto> despesas = despesaProduto;
+		despesas.forEach(despesa -> this.addDespesaProduto(despesa));
+		return despesas;
+	}
 }

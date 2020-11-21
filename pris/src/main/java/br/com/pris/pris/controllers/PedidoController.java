@@ -18,7 +18,7 @@ import br.com.pris.pris.model.entities.Pedido;
 import br.com.pris.pris.model.services.PedidoService;
 
 @RestController
-@RequestMapping("/pedido")
+@RequestMapping("/pedidos")
 @CrossOrigin
 public class PedidoController {
 	@Autowired

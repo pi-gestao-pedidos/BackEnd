@@ -29,6 +29,11 @@ public class DespesaProdutoController {
 	public ResponseEntity<DespesaProduto> insertDespesaProduto(@Valid @RequestBody DespesaProduto despesaProduto) {
 		return ResponseEntity.ok(service.addDespesaProduto(despesaProduto));
 	}
+	
+	@PostMapping("/lista")
+	public ResponseEntity<Iterable<DespesaProduto>> insertDespesaProdutoList(@Valid @RequestBody Iterable<DespesaProduto> despesaProduto) {
+		return ResponseEntity.ok(service.addDespesaProdutoList(despesaProduto));
+	}
 
 	@GetMapping
 	public ResponseEntity<Iterable<DespesaProduto>> showAllDespesaProduto() {

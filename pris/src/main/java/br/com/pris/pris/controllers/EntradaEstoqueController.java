@@ -29,6 +29,11 @@ public class EntradaEstoqueController {
 	public ResponseEntity<EntradaEstoque> insertEntradaEstoque(@Valid @RequestBody EntradaEstoque entradaEstoque) {
 		return ResponseEntity.ok(service.addEntradaEstoque(entradaEstoque));
 	}
+	
+	@PostMapping("/lista")
+	public ResponseEntity<Iterable<EntradaEstoque>> insertEntradaEstoqueList(@Valid @RequestBody Iterable<EntradaEstoque> entradaEstoque) {
+		return ResponseEntity.ok(service.addEntradaEstoqueList(entradaEstoque));
+	}
 
 	@GetMapping
 	public ResponseEntity<Iterable<EntradaEstoque>> showAllEntradaEstoque() {

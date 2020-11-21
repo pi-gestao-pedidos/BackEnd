@@ -18,7 +18,7 @@ import br.com.pris.pris.model.entities.Telefone;
 import br.com.pris.pris.model.services.TelefoneService;
 
 @RestController
-@RequestMapping("/telefone")
+@RequestMapping("/telefones")
 @CrossOrigin
 public class TelefoneController {
 	@Autowired

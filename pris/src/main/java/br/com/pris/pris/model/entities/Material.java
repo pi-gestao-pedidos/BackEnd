@@ -35,7 +35,7 @@ public class Material {
 	private String nome;
 	
 	@NotNull(message = "Estoque deve possuir um valor")
-	@Min(value = 0, message = "Estoque deve ser maior que 0")
+	@Min(value = 1, message = "Estoque deve ser maior que 0")
 	private Integer estoque;
 	
 	@NotBlank(message = "Medida deve ser preenchido.")
