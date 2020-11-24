@@ -25,6 +25,9 @@ public class ProdutoService {
 	@Autowired
 	private DespesaService despesas;
 	
+	/*@Autowired
+	private DespesaProdutoService despesaProduto;*/
+	
 	@Autowired
 	private FuncionarioService funcionario;
 	

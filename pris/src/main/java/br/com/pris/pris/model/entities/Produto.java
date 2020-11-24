@@ -3,6 +3,7 @@ package br.com.pris.pris.model.entities;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -63,11 +64,11 @@ public class Produto {
 	//@Min(value = 0, message = "Estoque deve ser maior que 0")
 	//private Integer estoque;
 	
-	@OneToMany(mappedBy = "produto")
-	@JsonIgnoreProperties({"produto", "idProduto"})
+	@OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnoreProperties("produto")
 	private List<DespesaProduto> despesas;
 	
-	@OneToMany(mappedBy = "produto")
+	@OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnoreProperties("produto")
 	private List<MaterialProduto> materiais;
 	

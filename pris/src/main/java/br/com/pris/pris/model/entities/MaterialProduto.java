@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,14 +25,17 @@ public class MaterialProduto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_material_produto;
 	
+	private Integer idMaterial;
+	private Integer idProduto;
+	
 	@ManyToOne
-	@JoinColumn(name="id_material")
-	@JsonIgnoreProperties("materiais")
+	@JoinColumn(name="idMaterial", insertable=false, updatable=false)
+	@JsonIgnore
 	private Material material;
 	
 	@ManyToOne
-	@JoinColumn(name="id_produto")
-	@JsonIgnoreProperties("materiais")
+	@JoinColumn(name="idProduto", insertable=false, updatable=false)
+	@JsonIgnore
 	private Produto produto;
 	
 	@NotNull(message = "Quantidade deve possuir um valor")

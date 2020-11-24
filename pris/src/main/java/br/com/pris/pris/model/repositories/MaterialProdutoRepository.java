@@ -9,7 +9,6 @@ import br.com.pris.pris.model.entities.MaterialProduto;
 
 public interface MaterialProdutoRepository extends CrudRepository<MaterialProduto, Integer>{
 
-
 	String query = "SELECT sum(material_produto.quantidade*material.custo)\n" + 
 			"FROM material_produto \n" + 
 			"INNER JOIN material ON material_produto.id_produto = :id \n" + 

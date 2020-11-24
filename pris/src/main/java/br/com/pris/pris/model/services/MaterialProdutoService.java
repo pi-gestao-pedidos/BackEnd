@@ -50,6 +50,7 @@ public class MaterialProdutoService {
 			}
 	}
 	
+	
 	public BigDecimal custoTotal(Integer id) {
 		return this.repository.custoTotalMateriais(id);
 	}
