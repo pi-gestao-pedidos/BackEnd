@@ -83,4 +83,17 @@ public class ProdutoService {
 		
 		return (((custoFixo.divide(BigDecimal.valueOf(tempo))).multiply(BigDecimal.valueOf(tempoProducao))).add(custoVariavel).add(custoMateriais)).toString();
 	}
+	
+	public BigDecimal custosTotais() {
+		List<BigDecimal> custoFixoList = new ArrayList<>();
+		this.despesas.findAllDespesas().forEach(despesa -> custoFixoList.add(despesa.getValor()));
+		this.funcionario.findAllFuncionarios().forEach(salario -> custoFixoList.add(salario.getSalario()));
+		BigDecimal custoFixo = custoFixoList.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
+		
+		List<Integer> tempoTrabalhoList = new ArrayList<>();
+		this.funcionario.findAllFuncionarios().forEach(e -> tempoTrabalhoList.add(this.funcionario.showCargaHorariaTotal(e.getIdPessoa())));
+		Integer tempo = tempoTrabalhoList.stream().reduce(0, Integer::sum);
+		
+		return (custoFixo.divide(BigDecimal.valueOf(tempo)));
+		}
 }
