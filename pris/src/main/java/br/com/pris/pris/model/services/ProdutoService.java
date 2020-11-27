@@ -77,7 +77,7 @@ public class ProdutoService {
 		this.funcionario.findAllFuncionarios().forEach(e -> tempoTrabalhoList.add(this.funcionario.showCargaHorariaTotal(e.getIdPessoa())));
 		Integer tempo = tempoTrabalhoList.stream().reduce(0, Integer::sum);
 		
-		Integer tempoProducao = this.findProdutoById(id).getTempo();
+		Double tempoProducao = this.findProdutoById(id).getTempo();
 		
 		BigDecimal custoMateriais = this.material.custoTotal(id);
 		

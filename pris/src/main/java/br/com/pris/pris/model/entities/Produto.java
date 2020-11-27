@@ -39,12 +39,12 @@ public class Produto {
 	private String descricao;
 	
 	@NotNull(message = "Tempo possuir um valor em Minutos")
-	@Min(value = 1, message = "Tempo deve ser maior que 0")
-	private Integer tempo;
+	@Min(value = (long) 0.25, message = "Tempo deve ser maior que 0")
+	private Double tempo;
 	
-	@NotNull(message = "Quantidade mensal deve possuir um valor")
-	@Min(value = 0, message = "Quantidade mensal Tempo deve ser maior ou igual a 0")
-	private Integer unidadeMensal;
+	//@NotNull(message = "Quantidade mensal deve possuir um valor")
+	//@Min(value = 0, message = "Quantidade mensal Tempo deve ser maior ou igual a 0")
+	//private Integer unidadeMensal;
 	
 	//@NotNull(message = "Preço de custo deve possuir um valor")
 	//@DecimalMin(value = "0.00", message = "Preço de custo deve ser maior ou igual a 0.00")
@@ -57,7 +57,7 @@ public class Produto {
 	private BigDecimal precoSugerido;
 	
 	//@NotNull(message = "Lucro deve possuir um valor")
-	@DecimalMin(value = "0.00", message = "Lucro deve ser maior ou igual a 0.00")
+	@Min(value = (long) 0.00, message = "Lucro deve ser maior ou igual a 0.00")
 	private Double lucro;
 	
 	//@NotNull(message = "Estoque deve possuir um valor")
