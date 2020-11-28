@@ -1,5 +1,7 @@
 package br.com.pris.pris.controllers;
 
+import java.math.BigDecimal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,7 @@ import br.com.pris.pris.model.entities.Produto;
 import br.com.pris.pris.model.services.ProdutoService;
 
 @RestController
-@RequestMapping("/produto")
+@RequestMapping("/produtos")
 @CrossOrigin
 public class ProdutoController {
 	@Autowired
@@ -54,5 +56,10 @@ public class ProdutoController {
 	@GetMapping("/{id}/preco")
 	public ResponseEntity<String> calculo(@PathVariable Integer id) {
 		return ResponseEntity.ok(service.estimateProdutoPrice(id));
+	}
+	
+	@GetMapping("/custohora")
+	public ResponseEntity<BigDecimal> calculoTotal() {
+		return ResponseEntity.ok(service.custosTotais());
 	}
 }

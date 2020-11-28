@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.server.ResponseStatusException;
 
+import br.com.pris.pris.model.entities.DespesaProduto;
 import br.com.pris.pris.model.entities.EntradaEstoque;
 import br.com.pris.pris.model.repositories.EntradaEstoqueRepository;
 
@@ -45,5 +46,11 @@ public class EntradaEstoqueService {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND,
 						"O registro não foi encontrado.");
 			}
+	}
+
+	public Iterable<EntradaEstoque> addEntradaEstoqueList(@Valid Iterable<EntradaEstoque> entradaEstoque) {
+		Iterable<EntradaEstoque> entradas = entradaEstoque;
+		entradas.forEach(entrada -> this.addEntradaEstoque(entrada));
+		return entradas;
 	}
 }

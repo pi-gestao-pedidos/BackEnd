@@ -18,7 +18,7 @@ import br.com.pris.pris.model.entities.Material;
 import br.com.pris.pris.model.services.MaterialService;
 
 @RestController
-@RequestMapping("/material")
+@RequestMapping("/materiais")
 @CrossOrigin
 public class MaterialController {
 	@Autowired

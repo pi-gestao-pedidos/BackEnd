@@ -40,7 +40,7 @@ public class UsuarioServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario usuario = repository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado na base de dados."));
+                .orElseThrow(() -> new UsernameNotFoundException("Email ou senha inválidos"));
 
         String[] roles = usuario.isAdmin() ?
                 new String[]{"ADMIN", "USER"} : new String[]{"USER"};
