@@ -25,8 +25,10 @@ public class Endereco {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idEndereco;
 	
+	private Integer idPessoa;
+	
 	@ManyToOne
-	@JoinColumn(name = "idPessoa")
+	@JoinColumn(name = "idPessoa", insertable=false, updatable=false)
 	@JsonIgnore
 	private Pessoa pessoa;
 	

@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -37,23 +38,28 @@ public abstract class Pessoa {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idPessoa;
 	
+	@NotBlank(message = "Nome deve ser preenchido.")
+	@Size (min = 3, message = "Nome deve ter mais que 2 caracteres.")
+	private String nome;
+
 	@Column(unique = true)
 	@CPF(message = "CPF inválido")
 	@Pattern(regexp="^(\\d{3}.\\d{3}.\\d{3}-\\d{2})$", message = "CPF deve seguir o padrão NNN.NNN.NNN-NN")
 	private String cpf;
 	
+	private String razaoSocial;
+
 	@Column(unique = true)
 	@CNPJ(message = "CNPJ inválido")
 	@Pattern(regexp="^(\\d{2}\\.\\d{3}\\.\\d{3}\\/\\d{4}\\-\\d{2})$", message = "CNPJ deve seguir o padrão NN.NNN.NNN.NNNN-NN")
 	private String cnpj;
 	
-	@NotBlank(message = "Nome deve ser preenchido.")
-	@Size (min = 3, message = "Nome deve ter mais que 2 caracteres.")
-	private String nome;
+	private String foto;	
 	
-	private String razaoSocial;
-	private String foto;
-	
+	@Column(unique = true)
+	@Email
+	@Pattern(regexp="^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$", message = "Email deve ser um endereço de e-mail bem formado")
+    private String email;
 	
 	@OneToMany(mappedBy = "pessoa")
 	@JsonIgnoreProperties("pessoa")

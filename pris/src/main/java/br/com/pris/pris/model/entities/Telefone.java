@@ -24,8 +24,10 @@ public class Telefone {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idTelefone;
 	
+	private Integer idPessoa;
+	
 	@ManyToOne
-	@JoinColumn(name = "idPessoa")
+	@JoinColumn(name = "idPessoa", insertable=false, updatable=false)
 	@JsonIgnoreProperties("pessoa")
 	private Pessoa pessoa;
 	
