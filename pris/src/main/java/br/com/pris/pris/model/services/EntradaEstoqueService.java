@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.com.pris.pris.model.entities.DespesaProduto;
 import br.com.pris.pris.model.entities.EntradaEstoque;
 import br.com.pris.pris.model.repositories.EntradaEstoqueRepository;
 

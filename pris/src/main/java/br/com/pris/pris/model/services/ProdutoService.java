@@ -1,6 +1,7 @@
 package br.com.pris.pris.model.services;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,6 +95,6 @@ public class ProdutoService {
 		this.funcionario.findAllFuncionarios().forEach(e -> tempoTrabalhoList.add(this.funcionario.showCargaHorariaTotal(e.getIdPessoa())));
 		Integer tempo = tempoTrabalhoList.stream().reduce(0, Integer::sum);
 		
-		return (custoFixo.divide(BigDecimal.valueOf(tempo)));
+		return (custoFixo.divide(BigDecimal.valueOf(tempo*60), RoundingMode.HALF_UP));
 		}
 }
