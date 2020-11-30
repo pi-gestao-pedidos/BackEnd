@@ -35,9 +35,14 @@ public class EmpreendedorController {
 		return ResponseEntity.ok(service.findAllEmpreendedores());
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Empreendedor> showEmpreendedorById(@PathVariable Integer id) {
-		return ResponseEntity.ok(service.findEmpreendedorById(id));
+//	@GetMapping("/{id}")
+//	public ResponseEntity<Empreendedor> showEmpreendedorById(@PathVariable Integer id) {
+//		return ResponseEntity.ok(service.findEmpreendedorById(id));
+//	}
+	
+	@GetMapping("/{email}")
+	public ResponseEntity<Empreendedor> showEmpreendedorById(@PathVariable String email) {
+		return ResponseEntity.ok(service.findEmpreendedorByEmail(email));
 	}
 
 	@PutMapping("/{id}")

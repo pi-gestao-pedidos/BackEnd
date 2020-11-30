@@ -33,13 +33,15 @@ public class Empreendedor extends Funcionario {
 //	@NotBlank(message = "Campo Senha deve estar preenchido")
 ////	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!-?])[a-zA-Z0-9!-?]{8,}$", message = "Senha deve conter no mínimo 8 caracteres, dos quais deve possuir no mínimo 1 letra, 1 número e 1 caractere especial.")
 //	private String senha;
+	
 
 	@OneToMany(mappedBy = "pessoa")
 	@JsonIgnoreProperties("despesa")
 	private List<Despesa> despesas;
 	
+
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "pessoa")
 	@JoinColumn(name = "idPessoa", referencedColumnName = "idPessoa")
-	@JsonIgnoreProperties({"pessoa", "senha"})
+	@JsonIgnoreProperties({"pessoa", "senha", "nome", "email", "idPessoa"})
 	private Usuario usuario;
 }

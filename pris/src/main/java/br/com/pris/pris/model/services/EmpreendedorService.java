@@ -32,6 +32,11 @@ public class EmpreendedorService {
 		return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
 				"O Empreendedor não foi encontrado."));
 	}
+	
+	public Empreendedor findEmpreendedorByEmail(String email) {
+		return repository.findByEmail(email).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+				"O Empreendedor não foi encontrado."));
+	}
 
 	public Empreendedor changeEmpreendedor(@Valid Empreendedor empreendedor, Integer id) {
 		this.findEmpreendedorById(id);
