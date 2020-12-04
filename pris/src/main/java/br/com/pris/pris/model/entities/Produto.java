@@ -72,7 +72,7 @@ public class Produto {
 	@JsonIgnoreProperties("produto")
 	private List<MaterialProduto> materiais;
 	
-	@OneToMany(mappedBy = "produto")
+	@OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnore//Properties("produtos")
 	private List<ItemPedido> pedidos;
 

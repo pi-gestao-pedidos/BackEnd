@@ -69,6 +69,10 @@ public abstract class Pessoa {
 	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnoreProperties("pessoa")
 	private List<Endereco> enderecos;
+
+	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnoreProperties("pessoa")
+	private List<Pedido> pedidos;
 	
 	
 }
