@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,8 @@ public class Pedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPedido;
-	private Integer status;
+	private int idPessoa;
+	private String status;
 	private LocalDate dataPedido;
 	private LocalDate dataEntrega;
 	private BigDecimal total;
@@ -37,11 +39,11 @@ public class Pedido {
 	private Double desconto;
 		
 	@ManyToOne
-	@JoinColumn(name = "idPessoa")
+	@JoinColumn(name = "idPessoa", insertable=false, updatable=false)
 	@JsonIgnoreProperties("pedido")
 	private Pessoa pessoa;
 	
-	@OneToMany(mappedBy = "pedido")
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnoreProperties("pedido")
 	private List<ItemPedido> produtos;
 	

@@ -2,6 +2,7 @@ package br.com.pris.pris.model.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -62,6 +63,10 @@ public abstract class Pessoa {
 	@OneToMany(mappedBy = "pessoa")
 	@JsonIgnoreProperties("pessoa")
 	private List<Endereco> enderecos;
+	
+	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnoreProperties("pessoa")
+	private List<Pedido> pedidos;
 	
 	
 }
