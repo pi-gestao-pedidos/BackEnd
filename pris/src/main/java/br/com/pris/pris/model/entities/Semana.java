@@ -21,19 +21,21 @@ import lombok.NoArgsConstructor;
 public class Semana {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idSemana;
+	private Integer idSemana;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idPessoa", referencedColumnName = "idPessoa")
+	private Integer idPessoa;
+	
+	@OneToOne(mappedBy = "semana")
+	@JoinColumn(name = "idPessoa", referencedColumnName = "idPessoa", insertable=false, updatable=false)
 	@JsonIgnoreProperties("pessoa")
-	private Pessoa pessoa;
+	private Funcionario funcionario;
 	
-	private Boolean domingo;
-	private Boolean segunda;
-	private Boolean terca;
-	private Boolean quarta;
-	private Boolean quinta;
-	private Boolean sexta;
-	private Boolean sabado;
+	private Boolean domingo = false;
+	private Boolean segunda = true;
+	private Boolean terca = true;
+	private Boolean quarta = true;
+	private Boolean quinta = true;
+	private Boolean sexta = true;
+	private Boolean sabado = false;
 
 }

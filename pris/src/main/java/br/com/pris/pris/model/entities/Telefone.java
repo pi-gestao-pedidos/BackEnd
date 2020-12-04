@@ -28,7 +28,7 @@ public class Telefone {
 	
 	@ManyToOne
 	@JoinColumn(name = "idPessoa", insertable=false, updatable=false)
-	@JsonIgnoreProperties("pessoa")
+	@JsonIgnoreProperties("telefones")
 	private Pessoa pessoa;
 	
 	@Pattern(regexp="^(\\d{2})$", message = "DDD deve seguir o padrão 99")

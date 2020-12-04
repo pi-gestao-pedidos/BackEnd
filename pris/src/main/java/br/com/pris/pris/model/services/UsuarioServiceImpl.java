@@ -15,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.pris.pris.exceptions.SenhaInvalidaException;
 import br.com.pris.pris.model.entities.Empreendedor;
+import br.com.pris.pris.model.entities.Semana;
 import br.com.pris.pris.model.entities.Usuario;
 import br.com.pris.pris.model.repositories.UsuarioRepository;
 
@@ -28,17 +29,23 @@ public class UsuarioServiceImpl implements UserDetailsService {
     
     @Autowired
     private EmpreendedorService empreendedorService;
+    
+    @Autowired
+    private SemanaService semanaService;
 
     @Transactional
     public Usuario salvar(Usuario usuario){
     	Usuario newUsuario = repository.save(usuario);
     	Empreendedor empreendedor = new Empreendedor();
+    	Semana semana = new Semana();
     	empreendedor.setEmail(newUsuario.getEmail());
     	empreendedor.setNome(newUsuario.getNome());
     	empreendedor.setUsuario(newUsuario);
     	empreendedorService.addEmpreendedor(empreendedor);
+    	semana.setIdPessoa(empreendedor.getIdPessoa());
+    	this.semanaService.addSemana(semana);
     	newUsuario = this.repository.findById(newUsuario.getId()).get();
-    	newUsuario.setPessoa(empreendedor);
+    	newUsuario.setIdPessoa(empreendedor.getIdPessoa());
         return repository.save(newUsuario);
     }
     
@@ -79,7 +86,7 @@ public class UsuarioServiceImpl implements UserDetailsService {
                 .build();
     }
 
-
+    @Transactional
 	public Usuario changeUsuario(@Valid Usuario usuario, String email) {
 		Usuario oldUsuario = repository.findByEmail(email).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
 				"Não foi possível completar a solicitação."));
